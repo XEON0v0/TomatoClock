@@ -1,0 +1,232 @@
+#!/usr/bin/env python3
+import argparse
+import json
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+
+TERMINAL_STATES = {"committed", "cancelled", "expired"}
+
+
+def utc_now():
+    return datetime.now(timezone.utc)
+
+
+def parse_date(value):
+    if not value:
+        return None
+    if value.endswith("Z"):
+        value = value[:-1] + "+00:00"
+    return datetime.fromisoformat(value)
+
+
+def load_session(path):
+    with open(path, "r", encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def save_session(path, document):
+    tmp = Path(str(path) + ".tmp")
+    with open(tmp, "w", encoding="utf-8") as handle:
+        json.dump(document, handle, ensure_ascii=False, indent=2, sort_keys=True)
+        handle.write("\n")
+    tmp.replace(path)
+
+
+def summary(plan):
+    sections = plan.get("sections", [])
+    items = [item for section in sections for item in section.get("items", [])]
+    return {
+        "title": plan.get("title", ""),
+        "sectionCount": len(sections),
+        "itemCount": len(items),
+        "previewItems": [item.get("title", "") for item in items[:5]],
+    }
+
+
+def validate_plan(plan):
+    if plan.get("schemaVersion") != 1:
+        raise ValueError(f"schemaVersion must be 1, received {plan.get('schemaVersion')!r}.")
+    if not str(plan.get("title", "")).strip():
+        raise ValueError("Plan title is required.")
+    sections = plan.get("sections")
+    if not isinstance(sections, list) or not sections:
+        raise ValueError("At least one section is required.")
+    for section_index, section in enumerate(sections):
+        if not str(section.get("title", "")).strip():
+            raise ValueError(f"Section {section_index + 1} title is required.")
+        items = section.get("items")
+        if not isinstance(items, list) or not items:
+            raise ValueError(f"Section {section_index + 1} must contain at least one item.")
+        for item_index, item in enumerate(items):
+            if not str(item.get("title", "")).strip():
+                raise ValueError(f"Item {item_index + 1} in section {section_index + 1} title is required.")
+            minutes = item.get("estimatedMinutes")
+            if minutes is not None and (not isinstance(minutes, int) or minutes <= 0):
+                raise ValueError(
+                    f"Item {item_index + 1} in section {section_index + 1} estimatedMinutes must be positive."
+                )
+            priority = item.get("priority")
+            if priority is not None and priority not in {"low", "normal", "high"}:
+                raise ValueError(
+                    f"Item {item_index + 1} in section {section_index + 1} priority must be low, normal, or high."
+                )
+    return plan
+
+
+def ensure_writable_session(document):
+    state = document.get("state")
+    if state in TERMINAL_STATES:
+        raise ValueError(f"Session is {state}; it no longer accepts helper calls.")
+    expires_at = parse_date(document.get("expiresAt"))
+    if expires_at and utc_now() >= expires_at:
+        document["state"] = "expired"
+        raise ValueError("Session expired.")
+
+
+def import_plan(path, arguments):
+    payload = arguments.get("plan") if isinstance(arguments, dict) and "plan" in arguments else arguments
+    if not isinstance(payload, dict):
+        raise ValueError("import_plan expects a plan object.")
+
+    document = load_session(path)
+    ensure_writable_session(document)
+    plan = validate_plan(payload)
+    document["state"] = "received"
+    document["stagedPlan"] = plan
+    document["lastError"] = None
+    save_session(path, document)
+    return summary(plan)
+
+
+def get_import_status(path):
+    document = load_session(path)
+    try:
+        ensure_writable_session(document)
+    except ValueError:
+        save_session(path, document)
+        raise
+    staged = document.get("stagedPlan")
+    return {
+        "state": document.get("state"),
+        "hasStagedPlan": staged is not None,
+        "summary": summary(staged) if staged else None,
+    }
+
+
+def read_message():
+    headers = {}
+    while True:
+        line = sys.stdin.buffer.readline()
+        if not line:
+            return None
+        if line in (b"\r\n", b"\n"):
+            break
+        key, _, value = line.decode("utf-8").partition(":")
+        headers[key.lower()] = value.strip()
+
+    length = int(headers.get("content-length", "0"))
+    if length <= 0:
+        return None
+    body = sys.stdin.buffer.read(length)
+    return json.loads(body.decode("utf-8"))
+
+
+def write_message(message):
+    body = json.dumps(message, ensure_ascii=False).encode("utf-8")
+    sys.stdout.buffer.write(f"Content-Length: {len(body)}\r\n\r\n".encode("ascii"))
+    sys.stdout.buffer.write(body)
+    sys.stdout.buffer.flush()
+
+
+def tool_result(request_id, payload):
+    return {
+        "jsonrpc": "2.0",
+        "id": request_id,
+        "result": {
+            "content": [{"type": "text", "text": json.dumps(payload, ensure_ascii=False)}],
+            "structuredContent": payload,
+        },
+    }
+
+
+def error_result(request_id, code, message):
+    return {"jsonrpc": "2.0", "id": request_id, "error": {"code": code, "message": message}}
+
+
+def handle_message(session_path, message):
+    method = message.get("method")
+    request_id = message.get("id")
+
+    if method == "initialize":
+        return {
+            "jsonrpc": "2.0",
+            "id": request_id,
+            "result": {
+                "protocolVersion": "2025-06-18",
+                "capabilities": {"tools": {}},
+                "serverInfo": {"name": "tomato-clock-import", "version": "1.0.0"},
+            },
+        }
+    if method == "notifications/initialized":
+        return None
+    if method == "tools/list":
+        return {
+            "jsonrpc": "2.0",
+            "id": request_id,
+            "result": {
+                "tools": [
+                    {
+                        "name": "import_plan",
+                        "description": "Stage a TomatoClock work plan using schema version 1.",
+                        "inputSchema": {"type": "object", "additionalProperties": True},
+                    },
+                    {
+                        "name": "get_import_status",
+                        "description": "Read the current TomatoClock import session state.",
+                        "inputSchema": {"type": "object", "properties": {}},
+                    },
+                ]
+            },
+        }
+    if method == "tools/call":
+        params = message.get("params", {})
+        name = params.get("name")
+        arguments = params.get("arguments") or {}
+        try:
+            if name == "import_plan":
+                return tool_result(request_id, import_plan(session_path, arguments))
+            if name == "get_import_status":
+                return tool_result(request_id, get_import_status(session_path))
+            return error_result(request_id, -32601, f"Unknown tool: {name}")
+        except Exception as exc:
+            document = load_session(session_path)
+            document["lastError"] = str(exc)
+            save_session(session_path, document)
+            return error_result(request_id, -32000, str(exc))
+    if request_id is None:
+        return None
+    return error_result(request_id, -32601, f"Unknown method: {method}")
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--session", required=True, help="Path to a TomatoClock import session JSON file.")
+    args = parser.parse_args()
+    session_path = Path(args.session)
+    if not session_path.exists():
+        print(f"Session file does not exist: {session_path}", file=sys.stderr)
+        return 2
+
+    while True:
+        message = read_message()
+        if message is None:
+            return 0
+        response = handle_message(session_path, message)
+        if response is not None:
+            write_message(response)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

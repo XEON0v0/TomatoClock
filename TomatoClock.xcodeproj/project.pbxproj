@@ -1,0 +1,706 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+/* Begin PBXGroup section */
+		AA000001 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA000010 /* TomatoClock.app */,
+				AA002010 /* TomatoClockTests.xctest */,
+			);
+			name = Products;
+		};
+		AA000002 /* TomatoClock */ = {
+			isa = PBXGroup;
+			children = (
+				AA000100 /* TomatoClockApp.swift */,
+				AA000200 /* App */,
+				AA000300 /* Models */,
+				AA001300 /* Services */,
+				AA000400 /* Views */,
+				AA000500 /* Charts */,
+				AA000600 /* Notifications */,
+				AA000700 /* Sound */,
+				AA000800 /* Theme */,
+				AA000900 /* Assets.xcassets */,
+				AA000011 /* Info.plist */,
+				AA002000 /* TomatoClockTests */,
+			);
+			path = TomatoClock;
+			sourceTree = "<group>";
+		};
+		AA000200 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				AA000201 /* AppState.swift */,
+				AA000202 /* WindowGroup+StatusBar.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		AA000300 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA000301 /* TimerPhase.swift */,
+				AA000302 /* TimerEngine.swift */,
+				AA000303 /* FocusSession.swift */,
+				AA001101 /* WorkPlan.swift */,
+				AA001102 /* PlanImportPayload.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AA001300 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AA001301 /* PlanImportSession.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		AA000400 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA000401 /* MainWindow.swift */,
+				AA000402 /* CountdownRingView.swift */,
+				AA000403 /* ControlButtons.swift */,
+				AA000404 /* ProgressRingLightProjection.swift */,
+				AA000405 /* StatusBarView.swift */,
+				AA000406 /* SettingsView.swift */,
+				AA001401 /* TimerPanelView.swift */,
+				AA001402 /* WorkbenchWindow.swift */,
+				AA001403 /* PlanPanelView.swift */,
+				AA001404 /* PlanEditSheets.swift */,
+				AA001405 /* PlanImportSheet.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AA002000 /* TomatoClockTests */ = {
+			isa = PBXGroup;
+			children = (
+				AA002101 /* TimerEngineTests.swift */,
+				AA002102 /* WorkPlanTests.swift */,
+				AA002103 /* PlanImportSessionTests.swift */,
+			);
+			path = ../TomatoClockTests;
+			sourceTree = "<group>";
+		};
+		AA000500 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				AA000501 /* WeeklyChartView.swift */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
+		AA000600 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				AA000601 /* NotificationManager.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		AA000700 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				AA000701 /* SoundPlayer.swift */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
+		AA000800 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				AA000801 /* PhaseTheme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		AA000900 /* Assets.xcassets */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = folder.assetcatalog;
+			path = Assets.xcassets;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXFileReference section */
+		AA000010 /* TomatoClock.app */ = {
+			isa = PBXFileReference;
+			explicitFileType = wrapper.application;
+			includeInIndex = 0;
+			path = TomatoClock.app;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AA002010 /* TomatoClockTests.xctest */ = {
+			isa = PBXFileReference;
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			path = TomatoClockTests.xctest;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AA000100 /* TomatoClockApp.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = TomatoClockApp.swift;
+			sourceTree = "<group>";
+		};
+		AA000201 /* AppState.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = AppState.swift;
+			sourceTree = "<group>";
+		};
+		AA000202 /* WindowGroup+StatusBar.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = "WindowGroup+StatusBar.swift";
+			sourceTree = "<group>";
+		};
+		AA000301 /* TimerPhase.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = TimerPhase.swift;
+			sourceTree = "<group>";
+		};
+		AA000302 /* TimerEngine.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = TimerEngine.swift;
+			sourceTree = "<group>";
+		};
+		AA000303 /* FocusSession.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = FocusSession.swift;
+			sourceTree = "<group>";
+		};
+		AA001101 /* WorkPlan.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = WorkPlan.swift;
+			sourceTree = "<group>";
+		};
+		AA001102 /* PlanImportPayload.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = PlanImportPayload.swift;
+			sourceTree = "<group>";
+		};
+		AA001301 /* PlanImportSession.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = PlanImportSession.swift;
+			sourceTree = "<group>";
+		};
+		AA000401 /* MainWindow.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = MainWindow.swift;
+			sourceTree = "<group>";
+		};
+		AA000402 /* CountdownRingView.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = CountdownRingView.swift;
+			sourceTree = "<group>";
+		};
+		AA000403 /* ControlButtons.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = ControlButtons.swift;
+			sourceTree = "<group>";
+		};
+		AA000404 /* ProgressRingLightProjection.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = ProgressRingLightProjection.swift;
+			sourceTree = "<group>";
+		};
+		AA000405 /* StatusBarView.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = StatusBarView.swift;
+			sourceTree = "<group>";
+		};
+		AA000406 /* SettingsView.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = SettingsView.swift;
+			sourceTree = "<group>";
+		};
+		AA001401 /* TimerPanelView.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = TimerPanelView.swift;
+			sourceTree = "<group>";
+		};
+		AA001402 /* WorkbenchWindow.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = WorkbenchWindow.swift;
+			sourceTree = "<group>";
+		};
+		AA001403 /* PlanPanelView.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = PlanPanelView.swift;
+			sourceTree = "<group>";
+		};
+		AA001404 /* PlanEditSheets.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = PlanEditSheets.swift;
+			sourceTree = "<group>";
+		};
+		AA001405 /* PlanImportSheet.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = PlanImportSheet.swift;
+			sourceTree = "<group>";
+		};
+		AA000501 /* WeeklyChartView.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = WeeklyChartView.swift;
+			sourceTree = "<group>";
+		};
+		AA000601 /* NotificationManager.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = NotificationManager.swift;
+			sourceTree = "<group>";
+		};
+		AA000701 /* SoundPlayer.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = SoundPlayer.swift;
+			sourceTree = "<group>";
+		};
+		AA000801 /* PhaseTheme.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = PhaseTheme.swift;
+			sourceTree = "<group>";
+		};
+		AA000011 /* Info.plist */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist;
+			path = Info.plist;
+			sourceTree = "<group>";
+		};
+		AA002101 /* TimerEngineTests.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = TimerEngineTests.swift;
+			sourceTree = "<group>";
+		};
+		AA002102 /* WorkPlanTests.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = WorkPlanTests.swift;
+			sourceTree = "<group>";
+		};
+		AA002103 /* PlanImportSessionTests.swift */ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = PlanImportSessionTests.swift;
+			sourceTree = "<group>";
+		};
+/* End PBXFileReference section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA000020 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA000110 /* TomatoClockApp.swift in Sources */,
+				AA000211 /* AppState.swift in Sources */,
+				AA000212 /* WindowGroup+StatusBar.swift in Sources */,
+				AA000311 /* TimerPhase.swift in Sources */,
+				AA000312 /* TimerEngine.swift in Sources */,
+				AA000313 /* FocusSession.swift in Sources */,
+				AA001111 /* WorkPlan.swift in Sources */,
+				AA001112 /* PlanImportPayload.swift in Sources */,
+				AA001311 /* PlanImportSession.swift in Sources */,
+				AA000411 /* MainWindow.swift in Sources */,
+				AA000412 /* CountdownRingView.swift in Sources */,
+				AA000413 /* ControlButtons.swift in Sources */,
+				AA000414 /* ProgressRingLightProjection.swift in Sources */,
+				AA000415 /* StatusBarView.swift in Sources */,
+				AA000416 /* SettingsView.swift in Sources */,
+				AA001411 /* TimerPanelView.swift in Sources */,
+				AA001412 /* WorkbenchWindow.swift in Sources */,
+				AA001413 /* PlanPanelView.swift in Sources */,
+				AA001414 /* PlanEditSheets.swift in Sources */,
+				AA001415 /* PlanImportSheet.swift in Sources */,
+				AA000511 /* WeeklyChartView.swift in Sources */,
+				AA000611 /* NotificationManager.swift in Sources */,
+				AA000711 /* SoundPlayer.swift in Sources */,
+				AA000811 /* PhaseTheme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA002020 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA002111 /* TimerEngineTests.swift in Sources */,
+				AA002112 /* WorkPlanTests.swift in Sources */,
+				AA002113 /* PlanImportSessionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA000021 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA000911 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA002021 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXBuildFile section */
+		AA000110 /* TomatoClockApp.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA000100 /* TomatoClockApp.swift */; };
+		AA000211 /* AppState.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA000201 /* AppState.swift */; };
+		AA000212 /* WindowGroup+StatusBar.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA000202 /* WindowGroup+StatusBar.swift */; };
+		AA000311 /* TimerPhase.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA000301 /* TimerPhase.swift */; };
+		AA000312 /* TimerEngine.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA000302 /* TimerEngine.swift */; };
+		AA000313 /* FocusSession.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA000303 /* FocusSession.swift */; };
+		AA001111 /* WorkPlan.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA001101 /* WorkPlan.swift */; };
+		AA001112 /* PlanImportPayload.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA001102 /* PlanImportPayload.swift */; };
+		AA001311 /* PlanImportSession.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA001301 /* PlanImportSession.swift */; };
+		AA000411 /* MainWindow.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA000401 /* MainWindow.swift */; };
+		AA000412 /* CountdownRingView.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA000402 /* CountdownRingView.swift */; };
+		AA000413 /* ControlButtons.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA000403 /* ControlButtons.swift */; };
+		AA000414 /* ProgressRingLightProjection.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA000404 /* ProgressRingLightProjection.swift */; };
+		AA000415 /* StatusBarView.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA000405 /* StatusBarView.swift */; };
+		AA000416 /* SettingsView.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA000406 /* SettingsView.swift */; };
+		AA001411 /* TimerPanelView.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA001401 /* TimerPanelView.swift */; };
+		AA001412 /* WorkbenchWindow.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA001402 /* WorkbenchWindow.swift */; };
+		AA001413 /* PlanPanelView.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA001403 /* PlanPanelView.swift */; };
+		AA001414 /* PlanEditSheets.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA001404 /* PlanEditSheets.swift */; };
+		AA001415 /* PlanImportSheet.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA001405 /* PlanImportSheet.swift */; };
+		AA000511 /* WeeklyChartView.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA000501 /* WeeklyChartView.swift */; };
+		AA000611 /* NotificationManager.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA000601 /* NotificationManager.swift */; };
+		AA000711 /* SoundPlayer.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA000701 /* SoundPlayer.swift */; };
+		AA000811 /* PhaseTheme.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA000801 /* PhaseTheme.swift */; };
+		AA000911 /* Assets.xcassets in Resources */ = { isa = PBXBuildFile; fileRef = AA000900 /* Assets.xcassets */; };
+		AA002111 /* TimerEngineTests.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA002101 /* TimerEngineTests.swift */; };
+		AA002112 /* WorkPlanTests.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA002102 /* WorkPlanTests.swift */; };
+		AA002113 /* PlanImportSessionTests.swift in Sources */ = { isa = PBXBuildFile; fileRef = AA002103 /* PlanImportSessionTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA000022 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA002022 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXContainerItemProxy section */
+		AA002031 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA000030;
+			remoteInfo = TomatoClock;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXTargetDependency section */
+		AA002032 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA000030 /* TomatoClock */;
+			targetProxy = AA002031 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXNativeTarget section */
+		AA000030 /* TomatoClock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA000040 /* Build configuration list for PBXNativeTarget TomatoClock */;
+			buildPhases = (
+				AA000020 /* Sources */,
+				AA000021 /* Resources */,
+				AA000022 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TomatoClock;
+			packageProductDependencies = (
+			);
+			productName = TomatoClock;
+			productReference = AA000010 /* TomatoClock.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AA002030 /* TomatoClockTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA002040 /* Build configuration list for PBXNativeTarget TomatoClockTests */;
+			buildPhases = (
+				AA002020 /* Sources */,
+				AA002021 /* Resources */,
+				AA002022 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA002032 /* PBXTargetDependency */,
+			);
+			name = TomatoClockTests;
+			packageProductDependencies = (
+			);
+			productName = TomatoClockTests;
+			productReference = AA002010 /* TomatoClockTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA000000 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					AA000030 = {
+						CreatedOnToolsVersion = 1540;
+					};
+					AA002030 = {
+						CreatedOnToolsVersion = 1540;
+						TestTargetID = AA000030;
+					};
+				};
+			};
+			buildConfigurationList = AA000031 /* Build configuration list for PBXProject */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = "zh-Hans";
+			hasScannedForEncodings = 0;
+			knownRegions = ("en", "Base", "zh-Hans");
+			mainGroup = AA000002;
+			productRefGroup = AA000001 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA000030 /* TomatoClock */,
+				AA002030 /* TomatoClockTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCConfigurationList section */
+		AA000031 /* Build configuration list for PBXProject */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA000050 /* Debug */,
+				AA000051 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA000040 /* Build configuration list for PBXNativeTarget TomatoClock */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA000060 /* Debug */,
+				AA000061 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA002040 /* Build configuration list for PBXNativeTarget TomatoClockTests */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA002060 /* Debug */,
+				AA002061 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCBuildConfiguration section */
+		AA000050 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_UNWIND_EXCEPTIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG SWIFT_DEMO_PROMPTS";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		AA000051 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_UNWIND_EXCEPTIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		AA000060 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TomatoClock/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = "";
+				INFOPLIST_KEY_NSPrincipalClass = "";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ray.tomatoclock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		AA000061 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TomatoClock/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = "";
+				INFOPLIST_KEY_NSPrincipalClass = "";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ray.tomatoclock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		AA002060 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ray.tomatoclock.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TomatoClock.app/Contents/MacOS/TomatoClock";
+			};
+			name = Debug;
+		};
+		AA002061 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ray.tomatoclock.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TomatoClock.app/Contents/MacOS/TomatoClock";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+	};
+	rootObject = AA000000 /* Project object */;
+}
